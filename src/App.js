@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect} from 'react'
+import Card from './Components/Card.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default function App(){
+
+  useEffect(() => {
+    const live = document.getElementById("live")
+
+    setInterval(() => {
+      live.style.opacity = 0.5;
+    }, 1000);
+
+    setInterval(()=>{
+      live.style.opacity = 1;
+    },2000)
+  },[])
+
+  return(
+    <div>
+    <h1 style={{textAlign : "center"}}>Covid 19 Tracker</h1>
+    <p style={{textAlign : "center"}} id= "live"> 🔴 LIVE </p>
+    <Card />
     </div>
-  );
+  )
 }
-
-export default App;
